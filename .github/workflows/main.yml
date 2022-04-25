@@ -9,15 +9,13 @@ jobs:
         uses: actions/checkout@main
 
       - name: Log into Azure
-        uses: azure/login@v1
+        uses: azure/login@master
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
       - name: Deploy Bicep file
-        uses: azure/arm-deploy@v1
+        uses: azure/arm-deploy@main
         with:
-          subscriptionId: ${{ secrets.SUBSCRIPTION_ID }}
+          deploymentName: ${{ github.run_number }}
           resourceGroupName: ${{ secrets.RESOURCE_GROUP }}
-          template: sa.bicep
-          parameters: storagePrefix=mystore
-          failOnStdErr: false
+          template: demo.bicep
