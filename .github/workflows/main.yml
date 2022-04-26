@@ -21,7 +21,7 @@ jobs:
           resourceGroupName: ${{ secrets.RESOURCE_GROUP }}
           template: acr.bicep
 
-      - run: echo ${{ steps.acr.outputs }}
+      - run: echo ${{ steps.acr.outputs.loginServer }}
 
       # - name: Login to DockerHub
       #   uses: docker/login-action@v1 
