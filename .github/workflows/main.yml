@@ -17,8 +17,8 @@ jobs:
         uses: azure/arm-deploy@main
         id: management
         with:
+          scope: managementgroup
           deploymentName: ${{ github.run_number }}
-          resourceGroupName: ${{ secrets.RESOURCE_GROUP }}
           template: management.bicep
 
       # - name: Deploy ACR
