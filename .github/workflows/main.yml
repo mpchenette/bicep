@@ -18,6 +18,7 @@ jobs:
         id: management
         with:
           deploymentName: ${{ github.run_number }}
+          resourceGroupName: ${{ secrets.RESOURCE_GROUP }}
           template: management.bicep
 
       # - name: Deploy ACR
