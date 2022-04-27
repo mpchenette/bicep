@@ -18,6 +18,7 @@ jobs:
         id: management
         with:
           scope: managementgroup
+          region: centralus
           deploymentName: ${{ github.run_number }}
           template: management.bicep
 
