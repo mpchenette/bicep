@@ -8,7 +8,7 @@ resource symbolicname 'Microsoft.Management/managementGroups@2021-04-01' = {
 }
 
 resource symbolicname2 'Microsoft.Management/managementGroups/subscriptions@2021-04-01' = {
-  name: 'chenette'
+  name: 'Azure subscription 1'
   parent: symbolicname
 }
 
