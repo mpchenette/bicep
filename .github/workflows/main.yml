@@ -13,26 +13,33 @@ jobs:
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-      - name: Deploy ACR
+      - name: Deploy MG
         uses: azure/arm-deploy@main
-        id: acr
+        id: management
         with:
           deploymentName: ${{ github.run_number }}
-          resourceGroupName: ${{ secrets.RESOURCE_GROUP }}
-          template: acr.bicep
+          template: management.bicep
 
-      - name: Login to ACR
-        uses: docker/login-action@v1 
-        with:
-          registry: ${{ steps.acr.outputs.loginServer }}
-          username: ${{ secrets.CLIENT_ID }}
-          password: ${{ secrets.CLIENT_SECRET }}
+      # - name: Deploy ACR
+      #   uses: azure/arm-deploy@main
+      #   id: acr
+      #   with:
+      #     deploymentName: ${{ github.run_number }}
+      #     resourceGroupName: ${{ secrets.RESOURCE_GROUP }}
+      #     template: acr.bicep
 
-      - name: build and push docker image
-        uses: docker/build-push-action@v2.10.0
-        with:
-          push: true
-          tags: ${{ steps.acr.outputs.loginServer }}/bwasm:${{ github.sha }}
+      # - name: Login to ACR
+      #   uses: docker/login-action@v1 
+      #   with:
+      #     registry: ${{ steps.acr.outputs.loginServer }}
+      #     username: ${{ secrets.CLIENT_ID }}
+      #     password: ${{ secrets.CLIENT_SECRET }}
+
+      # - name: build and push docker image
+      #   uses: docker/build-push-action@v2.10.0
+      #   with:
+      #     push: true
+      #     tags: ${{ steps.acr.outputs.loginServer }}/bwasm:${{ github.sha }}
 
       # - name: Deploy Bicep file
       #   uses: azure/arm-deploy@main
