@@ -18,7 +18,7 @@ jobs:
         uses: azure/CLI@v1
         with:
           inlineScript: |
-            az deployment tenant create -l WestUS -f $GITHUB_WORKSPACE/management.bicep
+            az deployment tenant create -l centralus -f $GITHUB_WORKSPACE/management.bicep
 
       # - name: Deploy MG
       #   uses: azure/arm-deploy@main
