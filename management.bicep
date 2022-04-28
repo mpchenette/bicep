@@ -3,9 +3,9 @@
 targetScope = 'tenant'
 
 resource symbolicname 'Microsoft.Management/managementGroups@2021-04-01' = {
-  name: 'Tenant Root Group'
+  name: 'Tenant_Root_Group'
   resource symbolicname2 'subscriptions' = {
-    name: 'Azure subscription 1'
+    name: 'Azure_subscription_1'
   }
 }
 
