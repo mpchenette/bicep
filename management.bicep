@@ -1,10 +1,9 @@
 // https://docs.microsoft.com/en-us/azure/templates/microsoft.management/managementgroups?tabs=bicep
 
-targetScope = 'managementGroup'
+targetScope = 'tenant'
 
 resource symbolicname 'Microsoft.Management/managementGroups@2021-04-01' = {
-  name: 'chenette'
-  scope: tenant()
+  name: 'Tenant Root Group'
   resource symbolicname2 'subscriptions' = {
     name: 'Azure subscription 1'
   }
