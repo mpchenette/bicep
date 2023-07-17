@@ -32,4 +32,4 @@ name: Azure ARM
 jobs:
 
   call-workflow-in-another-repo:
-    uses: chenette/workflow/main.yml@main
+    uses: chenette/workflow/.github/workflows/azure.yml@main
