@@ -33,3 +33,7 @@ jobs:
 
   call-workflow-in-another-repo:
     uses: chenette/workflow/.github/workflows/azure.yml@main
+    with:
+      environment: dev
+      deploy_infrastructure: true
+
