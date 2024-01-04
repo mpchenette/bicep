@@ -1,39 +1,43 @@
-# on: [push, workflow_dispatch]
-# name: Azure ARM
-# jobs:
-#   build-and-deploy:
-#     environment: Azure
-#     runs-on: ubuntu-latest
-#     steps:
-#       - uses: actions/checkout@v3
-#       - uses: azure/login@v1
-#         with:
-#           client-id: ${{ secrets.AZURE_CLIENT_ID }}
-#           tenant-id: ${{ secrets.AZURE_TENANT_ID }}
-#           subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-
-#       - uses: azure/arm-deploy@v1
-#         with:
-#           resourceGroupName: abc
-#           template: demo.bicep
-
-#       - name: Remove reployed resources
-#         uses: azure/arm-deploy@v1
-#         with:
-#           scope: subscription
-#           deploymentName: ${{ github.run_number }}
-#           region: southcentralus
-#           template: demo.bicep
-#           deploymentMode: Complete
-#           parameters: delete=true
-
 on: [push, workflow_dispatch]
 name: Azure ARM
 jobs:
+  build-and-deploy:
+    # environment: Azure
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run PSRule analysis
+        uses: microsoft/ps-rule@v2.9.0
 
-  call-workflow-in-another-repo:
-    uses: chenette/workflow/.github/workflows/azure.yml@main
-    with:
-      environment: dev
-      deploy_infrastructure: true
+
+      # - uses: azure/login@v1
+      #   with:
+      #     client-id: ${{ secrets.AZURE_CLIENT_ID }}
+      #     tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+      #     subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+
+      # - uses: azure/arm-deploy@v1
+      #   with:
+      #     resourceGroupName: abc
+      #     template: demo.bicep
+
+      # - name: Remove reployed resources
+      #   uses: azure/arm-deploy@v1
+      #   with:
+      #     scope: subscription
+      #     deploymentName: ${{ github.run_number }}
+      #     region: southcentralus
+      #     template: demo.bicep
+      #     deploymentMode: Complete
+      #     parameters: delete=true
+
+# on: [push, workflow_dispatch]
+# name: Azure ARM
+# jobs:
+
+#   call-workflow-in-another-repo:
+#     uses: chenette/workflow/.github/workflows/azure.yml@main
+#     with:
+#       environment: dev
+#       deploy_infrastructure: true
 
