@@ -4,8 +4,6 @@ param buildId string
 param environment string
 param location string = resourceGroup().location
 
-
-
 module apim '../../apim.bicep' = {
   name: 'unit-test-${buildId}-apim'
   params: {
@@ -31,4 +29,3 @@ module apim '../../apim.bicep' = {
 //     location: location
 //   }
 // }
-
