@@ -21,7 +21,8 @@ jobs:
 
       - uses: azure/arm-deploy@v1
         with:
-          resourceGroupName: abc
+          resourceGroupName: rg-application-dev-001
+
           template: main.bicep
 
       - name: Remove deployed resources
