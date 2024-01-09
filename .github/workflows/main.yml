@@ -23,6 +23,8 @@ jobs:
         with:
           resourceGroupName: rg-application-dev-001
           template: .github/workflows/main.bicep
+          parameters: buildId=${{ github.run_attempt }} environment=dev
+
 
       - name: Remove deployed resources
         uses: azure/arm-deploy@v1
