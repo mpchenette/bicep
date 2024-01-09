@@ -19,7 +19,7 @@ param properties object = {
   hostnameConfigurations: [
     {
       type: 'Proxy'
-      hostName: 'apim-chenette.azure-api.net'
+      hostName: 'apim-chenette'
       negotiateClientCertificate: false
       defaultSslBinding: true
       certificateSource: 'BuiltIn'
