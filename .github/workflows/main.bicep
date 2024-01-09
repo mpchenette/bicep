@@ -9,7 +9,7 @@ param location string = resourceGroup().location
 module apim '../../apim.bicep' = {
   name: 'unit-test-${buildId}-apim'
   params: {
-    application: 'apim'
+    application: 'apimchenette'
     environment: environment
     location: location
   }
